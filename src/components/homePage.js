@@ -5,14 +5,8 @@
 
 import React from 'react';
 
-/**
- *
- */
 class Home extends React.Component {
-  /**
-   *
-   * @return {XML}
-   */
+
   render() {
     return (
       <div className='jumbotron'>

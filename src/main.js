@@ -9,21 +9,26 @@ import React from "react";
 const ReactDOM = require('react-dom');
 const Home = require('./components/homePage');
 const About = require('./components/about/aboutPage');
+const Header = require('./components/common/header');
 
 class App extends React.Component {
   render() {
     let Child;
-
     switch (this.props.route) {
       case 'about':
         Child = About;
+        console.log("Stff")
+
         break;
       default:
         Child = Home;
     }
 
     return (
-      <div><Child /></div>
+      <div>
+        <Header />
+        <Child />
+      </div>
     );
   }
 }
@@ -33,7 +38,7 @@ function render() {
   ReactDOM.render(<App route={route} />, document.getElementById('app') )
 }
 
-window.addEventListener('hashChange', render);
+window.addEventListener('hashchange', render);
 render();
 
 
