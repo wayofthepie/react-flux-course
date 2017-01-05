@@ -8,6 +8,7 @@ import React from "react";
 
 const ReactDOM = require('react-dom');
 const Home = require('./components/homePage');
+const Authors = require('./components/authors/authorPage');
 const About = require('./components/about/aboutPage');
 const Header = require('./components/common/header');
 
@@ -17,8 +18,9 @@ class App extends React.Component {
     switch (this.props.route) {
       case 'about':
         Child = About;
-        console.log("Stff")
-
+        break;
+      case 'authors':
+        Child = Authors;
         break;
       default:
         Child = Home;
