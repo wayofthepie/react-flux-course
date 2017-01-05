@@ -1,8 +1,11 @@
 /**
  * Created by chaospie on 1/5/17.
  */
-$ = jQuery = require('jquery');
+'use strict';
 
-let App = console.log('Hello');
+const $ = require('jquery');
+const jQuery = require('jquery');
+
+const App = console.log('Hello');
 
 module.exports = App;
