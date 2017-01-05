@@ -6,7 +6,6 @@
 let React = require('react');
 
 class AuthorList extends React.Component {
-
   render() {
     let createAuthorRow = function (author) {
       return (
@@ -32,5 +31,9 @@ class AuthorList extends React.Component {
     );
   }
 }
+
+AuthorList.propTypes = {
+  authors: React.PropTypes.array.isRequired
+};
 
 module.exports = AuthorList;
