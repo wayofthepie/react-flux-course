@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "browserify": "^13.3.0",
     "generator-react-webpack": "^3.3.4",
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.0.0",
     "gulp-open": "^2.0.0",
+    "jquery": "^3.1.1",
     "reactify": "^1.1.1",
     "vinyl-source-stream": "^1.1.0",
     "yo": "^1.8.5"
