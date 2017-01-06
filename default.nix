@@ -5,7 +5,7 @@ let
    # Convenience alias for the standard environment
    stdenv = pkgs.stdenv;
 in stdenv.mkDerivation {
-  name = "vulgr-ui";
+  name = "react-flux-course";
   # The source code is stored in our 'app' directory
   src = "./";
   # Our package depends on the nodejs package defined above
