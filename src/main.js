@@ -2,46 +2,10 @@
  *
  */
 'use strict';
-// const $ = require('jquery');
-// const jQuery = require('jquery');
+
 import React from "react";
-
+import { Router, browserHistory } from 'react-router';
 const ReactDOM = require('react-dom');
-const Home = require('./components/homePage');
-const Authors = require('./components/authors/authorPage');
-const About = require('./components/about/aboutPage');
-const Header = require('./components/common/header');
+const routes = require('./routes');
 
-class App extends React.Component {
-  render() {
-    let Child;
-    switch (this.props.route) {
-      case 'about':
-        Child = About;
-        break;
-      case 'authors':
-        Child = Authors;
-        break;
-      default:
-        Child = Home;
-    }
-
-    return (
-      <div>
-        <Header />
-        <Child />
-      </div>
-    );
-  }
-}
-
-function render() {
-  let route = window.location.hash.substr(1);
-  ReactDOM.render(<App route={route} />, document.getElementById('app') )
-}
-
-window.addEventListener('hashchange', render);
-render();
-
-
-console.log("FUck")
+ReactDOM.render(<Router history={browserHistory}>{routes}</Router>, document.getElementById('app'));
