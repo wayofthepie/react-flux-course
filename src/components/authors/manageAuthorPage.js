@@ -25,7 +25,6 @@ class ManageAuthorPage extends React.Component {
 
   authorFormIsValid() {
     let formIsValid = true;
-    console.log("ya");
 
     this.setState({errors: {}});
     if (this.state.author.firstName.length < 1) {
