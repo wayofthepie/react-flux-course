@@ -11,7 +11,7 @@ class AuthorList extends React.Component {
     let createAuthorRow = function (author) {
       return (
         <tr key={author.id}>
-          <td><Link to='manageAuthor' params={{id: author.id}}>{author.id}</Link></td>
+          <td><Link to={{ pathname:'manageAuthor', state:{id: author.id} }}>{author.id}</Link></td>
           <td>{author.firstName} {author.lastName}</td>
         </tr>
       )

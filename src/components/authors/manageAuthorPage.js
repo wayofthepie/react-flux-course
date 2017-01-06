@@ -4,10 +4,11 @@
 'use strict';
 
 import React from 'react';
-import { withRouter} from 'react-router';
+import {withRouter} from 'react-router';
 let toastr = require('toastr');
 let AuthorForm = require('./authorForm');
-let AuthorApi = require('../../api/authorApi');
+let AuthorActions = require('../../actions/authorActions');
+let AuthorStore = require('../../stores/authorStore');
 
 class ManageAuthorPage extends React.Component {
   constructor(props) {
@@ -24,9 +25,9 @@ class ManageAuthorPage extends React.Component {
   componentWillMount() {
     let authorId = this.props.params.id; // from path 'author/:id'
 
-    if(authorId) {
+    if (authorId) {
       // if there is a param, get info about the author
-      this.setState({author: AuthorApi.getAuthorById(authorId)});
+      this.setState({author: AuthorStore.getAuthorById(authorId)});
     }
 
   }
@@ -66,7 +67,11 @@ class ManageAuthorPage extends React.Component {
     if (!this.authorFormIsValid()) {
       return;
     }
-    AuthorApi.saveAuthor(this.state.author);
+    if (this.state.author.id) {
+      AuthorActions.updateAuthor(this.state.author);
+    } else {
+      AuthorActions.createAuthor(this.state.author);
+    }
     toastr.success("Author saved.");
     this.props.router.push('authors'); // Redirect to authors
   }

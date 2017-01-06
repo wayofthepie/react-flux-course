@@ -3,6 +3,6 @@
  */
 'use strict';
 
-import Dispatcher from 'flux';
+import Flux from 'flux';
 
-module.exports = new Dispatcher();
+module.exports = new Flux.Dispatcher();

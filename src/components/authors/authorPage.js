@@ -5,19 +5,15 @@
 
 let React = require('react');
 import { Link } from 'react-router';
-let AuthorApi = require('../../api/authorApi');
+let AuthorStore = require('../../stores/authorStore');
 let AuthorList = require('./authorList');
 
 class AuthorPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      authors: [],
+      authors: AuthorStore.getAllAuthors(),
     };
-  }
-
-  componentWillMount() {
-    this.setState({authors: AuthorApi.getAllAuthors()});
   }
 
   render() {

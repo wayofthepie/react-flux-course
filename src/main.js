@@ -5,7 +5,10 @@
 
 import React from "react";
 import { Router, browserHistory } from 'react-router';
-const ReactDOM = require('react-dom');
-const routes = require('./routes');
+let ReactDOM = require('react-dom');
+let routes = require('./routes');
+let InitializeActions = require('./actions/initializeActions');
+
+InitializeActions.initApp();
 
 ReactDOM.render(<Router history={browserHistory}>{routes}</Router>, document.getElementById('app'));
