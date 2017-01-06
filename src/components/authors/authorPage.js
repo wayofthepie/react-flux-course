@@ -4,6 +4,7 @@
 'use strict';
 
 let React = require('react');
+import { Link } from 'react-router';
 let AuthorApi = require('../../api/authorApi');
 let AuthorList = require('./authorList');
 
@@ -23,6 +24,7 @@ class AuthorPage extends React.Component {
     return (
       <div>
         <h1>Authors</h1>
+        <Link to='author' className='btn btn-default'>Add Author</Link>
         <AuthorList authors={this.state.authors} />
       </div>
     );
