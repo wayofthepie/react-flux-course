@@ -11,7 +11,10 @@ let AuthorApi = require('../../api/authorApi');
 class ManageAuthorPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {author: {id: '', firstName: '', lastName: ''}}
+    this.state = {
+      author: {id: '', firstName: '', lastName: ''},
+      errors: {},
+    }
   }
 
   setAuthorState(event) {
@@ -20,8 +23,28 @@ class ManageAuthorPage extends React.Component {
     return this.setState({author: this.state.author});
   }
 
+  authorFormIsValid() {
+    let formIsValid = true;
+    console.log("ya");
+
+    this.setState({errors: {}});
+    if (this.state.author.firstName.length < 1) {
+      formIsValid = false;
+      this.state.errors.firstName = 'First name must be at least 1 character.';
+    }
+    if (this.state.author.lastName.length < 1) {
+      formIsValid = false;
+      this.state.errors.lastName = 'Last name must be at least 1 character.';
+    }
+    this.setState({errors: this.state.errors});
+    return formIsValid;
+  }
+
   saveAuthor(event) {
     event.preventDefault(); // Stop browser default - i.e. POST
+    if (!this.authorFormIsValid()) {
+      return;
+    }
     AuthorApi.saveAuthor(this.state.author);
     toastr.success("Author saved.");
     this.props.router.push('authors'); // Redirect to authors
@@ -34,11 +57,11 @@ class ManageAuthorPage extends React.Component {
         <AuthorForm
           author={this.state.author}
           onChange={this.setAuthorState.bind(this)}
-          onSave={this.saveAuthor.bind(this)} />
+          onSave={this.saveAuthor.bind(this)}
+          errors={this.state.errors} />
       </div>
     );
   }
 }
 
-module
-  .exports = ManageAuthorPage;
+module.exports = ManageAuthorPage;
