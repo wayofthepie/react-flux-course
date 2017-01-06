@@ -4,6 +4,7 @@
 'use strict';
 
 import React from 'react';
+import { withRouter} from 'react-router';
 let toastr = require('toastr');
 let AuthorForm = require('./authorForm');
 let AuthorApi = require('../../api/authorApi');
@@ -13,8 +14,19 @@ class ManageAuthorPage extends React.Component {
     super(props);
     this.state = {
       author: {id: '', firstName: '', lastName: ''},
+      saved: false,
       errors: {},
     }
+  }
+
+  componentDidMount() {
+    this.props.router.setRouteLeaveHook(this.props.route, () => {
+      console.log(this.state);
+
+      if (!this.state.saved) {
+        return 'You have unsaved information, are you sure you want to leave this page?'
+      }
+    })
   }
 
   setAuthorState(event) {
@@ -63,4 +75,4 @@ class ManageAuthorPage extends React.Component {
   }
 }
 
-module.exports = ManageAuthorPage;
+module.exports = withRouter(ManageAuthorPage);
