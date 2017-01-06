@@ -19,10 +19,20 @@ class ManageAuthorPage extends React.Component {
     }
   }
 
+  // Before component has mounted. setState called here will not cause a re-render
+  // because this happens before the render occurs.
+  componentWillMount() {
+    let authorId = this.props.params.id; // from path 'author/:id'
+
+    if(authorId) {
+      // if there is a param, get info about the author
+      this.setState({author: AuthorApi.getAuthorById(authorId)});
+    }
+
+  }
+
   componentDidMount() {
     this.props.router.setRouteLeaveHook(this.props.route, () => {
-      console.log(this.state);
-
       if (!this.state.saved) {
         return 'You have unsaved information, are you sure you want to leave this page?'
       }

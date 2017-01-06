@@ -3,6 +3,7 @@
  */
 'use strict';
 
+import { Link } from 'react-router';
 let React = require('react');
 
 class AuthorList extends React.Component {
@@ -10,7 +11,7 @@ class AuthorList extends React.Component {
     let createAuthorRow = function (author) {
       return (
         <tr key={author.id}>
-          <td><a href={'/#authors/' + author.id}>{author.id}</a></td>
+          <td><Link to='manageAuthor' params={{id: author.id}}>{author.id}</Link></td>
           <td>{author.firstName} {author.lastName}</td>
         </tr>
       )
